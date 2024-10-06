@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Projects</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>All Projects</h1>
+        <form action="/projects" method="post" class="new-project-form">
+            <input type="text" name="title" placeholder="New Project Title" required>
+            <button type="submit">Create Project</button>
+        </form>
+        <ul>
+            <li th:each="project : ${projects}" class="project-item">
+                <div class="project-content">
+                    <a th:href="@{'/projects/' + ${project.id}}" class="project-link">[[${project.title}]]</a>
+                    
+                    
+                    <form th:action="@{'/projects/delete/' + ${project.id}}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirmAction('Are you sure you want to delete this project?');" class="delete-button">Delete</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

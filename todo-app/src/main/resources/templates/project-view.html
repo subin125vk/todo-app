@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Project Details</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" /> 
+    <script src="/js/scripts.js"></script> <!-- Link to JS -->
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <form th:action="@{'/projects/' + ${project.id} + '/edit'}" method="post" class="project-title-form">
+                <input type="text" name="title" th:value="${project.title}" placeholder="Project Title" required>
+                <button type="submit">Update Title</button>
+            </form>
+        </h1>
+
+        <!-- Add new todo -->
+        <form th:action="@{'/projects/' + ${project.id} + '/todos'}" method="post" class="todo-form">
+            <input type="text" name="description" placeholder="Task Name" required>
+            <textarea name="todoDescription" placeholder="Detailed Description" rows="4" cols="50" required></textarea>
+            <button type="submit">Add Todo</button>
+        </form>
+
+        <h2>Todos</h2>
+        <ul>
+            <li th:each="todo : ${project.todos}" class="todo-item">
+                <form th:action="@{'/projects/' + ${project.id} + '/todos/' + ${todo.id} + '/edit'}" method="post" style="display:inline;">
+                    <input type="text" name="description" th:value="${todo.description}" placeholder="Short Description" required>
+                    <textarea name="todoDescription" rows="2" cols="50" placeholder="Detailed Description" th:text="${todo.todoDescription}" required></textarea>
+                    <button type="submit">Update</button>
+                </form>
+
+                <span th:text="${todo.completed ? ' (Completed)' : ' (Pending)'}"></span>
+
+                <form th:action="@{'/projects/' + ${project.id} + '/todos/' + ${todo.id} + '/complete'}" method="post" style="display:inline;">
+                    <button type="submit" th:disabled="${todo.completed}">Mark as Complete</button>
+                </form>
+
+                <form th:action="@{'/projects/' + ${project.id} + '/todos/delete/' + ${todo.id}}" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        </ul>
+
+        <h2>Export</h2>
+        <form th:action="@{'/projects/' + ${project.id} + '/export'}" method="post" onsubmit="return showExportMessage();">
+            <button type="submit">Export Project as Markdown</button>
+        </form>
+
+        <!-- Back to Projects button -->
+        <div class="back-button">
+            <a th:href="@{/projects}" class="button">Back to Projects</a>
+        </div>
+    </div>
+</body>
+</html>

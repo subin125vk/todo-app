@@ -1,0 +1,133 @@
+/* styles.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container for content */
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+h1, h2 {
+    color: #333;
+}
+
+/* Form styles */
+.new-project-form, .todo-form, .project-title-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+input[type="text"], textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 22px); /* Full width minus padding and border */
+    box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+textarea {
+    resize: none; /* Prevent resizing */
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4cae4c; /* Darker shade for hover */
+}
+
+/* Compact button styles */
+.compact-button {
+    padding: 5px 10px; /* Smaller padding */
+    background-color: #007bff; /* Blue color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.compact-button:hover {
+    background-color: #0056b3; /* Darker blue for hover */
+}
+
+/* Project item styles */
+.project-item, .todo-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
+/* Delete button styles */
+.delete-button {
+    padding: 5px 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #c9302c; /* Darker shade for hover */
+}
+
+/* Back button styles */
+.back-button {
+    margin-top: 20px;
+}
+
+.back-button .button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-button .button:hover {
+    background-color: #0056b3; /* Darker shade for hover */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    input[type="text"], textarea {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
